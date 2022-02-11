@@ -1,0 +1,211 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  background-image: url(background.png);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 主圖 */
+.bear {
+  width: 300px;
+  margin: 50px 30px 0 30px;
+  animation-name: bearMove;
+}
+
+.sea {
+  margin-top: -110px;
+  width: 100%;
+  z-index: 88;
+  animation-name: seaMove;
+}
+
+.fishing-rod {
+  position: absolute;
+  left: 300px;
+  top: 50px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation-name: rodMove;
+}
+
+input {
+  visibility: hidden;
+  position: absolute;
+}
+
+.line {
+  width: 1.5px;
+  height: 50px;
+  background: #8EA8BF;
+  transition: height 2s ease-out;
+}
+
+.heart {
+  width: 100%;
+  margin-top: -5px;
+}
+
+/* 放竿效果 */
+input:checked ~.line {
+  height: 250px;
+}
+
+.content-wrapper, .bird, .bird-alert {
+  visibility: hidden;
+}
+
+.fish-wrapper {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 35%;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+}
+
+.fish1, .fish2, .fish3, .fish4 {
+  animation-name: fishMove;
+}
+
+.fish1 {
+  width: 50px;
+  flex: 1;
+  margin-top: 0;
+}
+
+.fish2 {
+  width: 50px;
+  flex: 0.9;
+  margin-top: 20px;
+}
+
+.fish3 {
+  width: 50px;
+  flex: 1.1;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.fish4 {
+  width: 50px;
+  flex: 1.2;
+  margin-top: -15px;
+  margin-left: -20px;
+}
+
+.bird-alert {
+  position: absolute;
+  top: 240px;
+  right: 40px;
+  width: 50px;
+  z-index: 5;
+  animation-name: cardMove;
+}
+
+.bird {
+  position: absolute;
+  top: 250px;
+  right: 50px;
+  width: 150px;
+  z-index: 5;
+  animation-name: birdMove;
+}
+
+/* for JS */
+.move-backward {
+  z-index: 4;
+}
+
+.show {
+  visibility: visible;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+}
+
+.show-bird {
+  visibility: visible;
+  /* .bird 和 .bird-alert是絕對定位，沒辦法靠上層div作用，所以需要獨立出來 */
+}
+
+/* animation */
+.bear, .fishing-rod, .sea, .fish1, .fish2, .fish3, .fish4 , .bird, .bird-alert {
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.fish1, .fish2, .fish3, .fish4  {
+  animation-delay: 1s;
+}
+
+@keyframes bearMove {
+  from {
+    margin-left: 0;
+  }
+}
+
+@keyframes rodMove {
+  from {
+    left: 270px;
+  }
+}
+
+@keyframes seaMove {
+  from {
+    margin-top: -80px;
+  }
+}
+
+
+@keyframes birdMove {
+  from {
+    right: -10px;
+  }
+}
+
+
+@keyframes cardMove {
+  from {
+    right: -20px;
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fishMove {
+  from {
+    transform: rotate(-15deg);
+    margin-top: -50px;
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+  
+}
